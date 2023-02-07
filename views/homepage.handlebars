@@ -1,0 +1,17 @@
+<div id='homepage-posts'>
+  {{#each posts as |post|}}
+    <a id='single-post' href='/post/{{post.id}}'>
+      <div id='post-header'>
+        <p id='post-title'>{{post.title}}</p>
+        <p id='post-date'>Posted by
+          {{post.user.username}}
+          <br />
+          on
+          {{format_date post.created_at}}</p>
+      </div>
+      <p id='post-body'>
+        {{post.description}}
+      </p>
+    </a>
+  {{/each}}
+</div>

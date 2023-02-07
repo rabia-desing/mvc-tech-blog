@@ -1,0 +1,64 @@
+<div class='addPost-container'>
+  <h1 class="primary-bg">Create New Post</h1>
+  <div class="p-15">
+    <form id='addPost-form'>
+      <input
+        type='text'
+        id='add-post-title'
+        placeholder='Title'
+      />
+      <textarea
+        type='text'
+        id='add-post-desc'
+        placeholder='Description'
+      ></textarea>
+      <button id='add-post' class="primary-bg" type='submit'>Post</button>
+    </form>
+  </div>
+</div>
+<h1 id='your-posts'>Your posts</h1>
+<div id='dashboard-posts'>
+  {{#if posts}}{{else}}
+    <p id='no-posts'>No Posts</p>
+  {{/if}}
+
+  {{#each posts as |post|}}
+    <div id='single-post'>
+      <div id='post-header'>
+        <h1 id='post-title'>{{post.title}}</h1>
+        <p id='post-date'>{{format_date post.date}}</p>
+      </div>
+      <p id='post-body'>
+        {{post.description}}
+      </p>
+      <div id='post-controls'>
+        <button
+          data-post-id={{post.postId}}
+          class='edit-post-id primary-bg'
+          id='edit-post-{{post.postId}}'
+        >Edit post</button>
+        <button
+          data-post-id={{post.postId}}
+          class='delete-post-id primary-bg'
+          id='delete-post-{{post.postId}}'
+        >Delete post</button>
+        <button
+          data-post-id={{post.postId}}
+          id='view-comments-{{post.postId}}'
+          class='view-comments primary-bg'
+        >View comments</button>
+        <button
+          data-post-id={{post.postId}}
+          class='confirm-post primary-bg'
+          id='confirm-post-{{post.postId}}'
+        >Confirm</button>
+        <p id='edit-post-status'>Make sure the new post title and body are
+          greater than 4 characters</p>
+      </div>
+    </div>
+  {{/each}}
+</div>
+<script src='/js/add-post.js'></script>
+<script src='/js/edit-post.js'></script>
+<script src='/js/delete-post.js'></script>
+<script src='/js/view-comments.js'></script>
